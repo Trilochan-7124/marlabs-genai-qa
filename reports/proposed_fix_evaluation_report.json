@@ -1,0 +1,2201 @@
+{
+  "generated_at": "2026-10-01T07:52:21.732096+00:00",
+  "summary": {
+    "total": 12,
+    "recordings_with_failures": 0,
+    "recordings_without_failures": 12,
+    "checks": {
+      "PASS": 116,
+      "FAIL": 0,
+      "NOT_EVALUATED": 0,
+      "NOT_RUN": 0,
+      "total": 116
+    },
+    "risk_areas": {
+      "response_contract": {
+        "PASS": 24,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 24
+      },
+      "expected_behavior": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 12
+      },
+      "answer_grounding": {
+        "PASS": 20,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 20
+      },
+      "citation_quality": {
+        "PASS": 24,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 24
+      },
+      "authorization": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 12
+      },
+      "provider_behavior": {
+        "PASS": 24,
+        "FAIL": 0,
+        "NOT_EVALUATED": 0,
+        "NOT_RUN": 0,
+        "total": 24
+      }
+    },
+    "designed_tests_not_run": 10
+  },
+  "results": [
+    {
+      "recording_id": "01",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "01",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "Your annual certification limit is INR 25,000.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual certification limit",
+              "yearly certification reimbursement ceiling"
+            ],
+            [
+              "INR 25000",
+              "25000 Indian rupees"
+            ]
+          ],
+          "observed": {
+            "answer": "Your annual certification limit is INR 25,000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual certification limit",
+                  "yearly certification reimbursement ceiling"
+                ],
+                "found": [
+                  "annual certification limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000",
+                  "25000 Indian rupees"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "claim is approved",
+              "payment is guaranteed",
+              "remaining balance"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "01",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "02",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "02",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "The annual certification reimbursement limit for contractors is INR 10000.",
+            "citations": [
+              {
+                "chunk_id": "P05",
+                "quote": "The annual certification reimbursement limit for contractors is INR 10000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual certification limit"
+            ],
+            [
+              "INR 10000"
+            ]
+          ],
+          "observed": {
+            "answer": "The annual certification reimbursement limit for contractors is INR 10000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual certification limit"
+                ],
+                "found": [
+                  "annual certification reimbursement limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 10000"
+                ],
+                "found": [
+                  "INR 10000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "claim is approved",
+              "payment is guaranteed"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P05"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P05"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P05"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P05"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "02",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "03",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "03",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "The annual certification reimbursement limit is INR 25000.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual limit"
+            ],
+            [
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "The annual certification reimbursement limit is INR 25000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual limit"
+                ],
+                "found": [
+                  "annual certification reimbursement limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR 40000",
+              "claim is approved",
+              "payment is guaranteed"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "03",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "04",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "04",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "CONFLICT",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "CONFLICT",
+            "answer": null,
+            "citations": [
+              {
+                "chunk_id": "P07",
+                "quote": "The annual home-office allowance for employees is INR 12000."
+              },
+              {
+                "chunk_id": "P08",
+                "quote": "The annual home-office allowance for employees is INR 15000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "CONFLICT",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "CONFLICT",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR 12000",
+              "INR 15000"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P07",
+              "P08"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P07",
+              "P08"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P07",
+              "P08"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P07",
+              "P08"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "04",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "05",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "05",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "INSUFFICIENT_EVIDENCE",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "INSUFFICIENT_EVIDENCE",
+            "answer": null,
+            "citations": [],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "INSUFFICIENT_EVIDENCE",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "INSUFFICIENT_EVIDENCE",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR",
+              "reimbursement is available"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": []
+          },
+          "observed": {
+            "citation_ids": [],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 0,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "05",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "not_called",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "not_called",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "06",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "06",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "Your annual certification limit is INR 25,000.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual certification limit"
+            ],
+            [
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "Your annual certification limit is INR 25,000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual certification limit"
+                ],
+                "found": [
+                  "annual certification limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR 35000",
+              "claim is approved",
+              "payment is guaranteed"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "06",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "07",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "07",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 503,
+            "status": null,
+            "body": {
+              "error": {
+                "code": "PROVIDER_TIMEOUT",
+                "message": "The answer service is temporarily unavailable."
+              }
+            }
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": null,
+            "answer": null,
+            "citations": [],
+            "body": {
+              "error": {
+                "code": "PROVIDER_TIMEOUT",
+                "message": "The answer service is temporarily unavailable."
+              }
+            }
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 503,
+            "status": null,
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 503,
+            "status": null,
+            "error_code": "PROVIDER_TIMEOUT"
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": []
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": []
+          },
+          "observed": {
+            "citation_ids": [],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "07",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "timeout",
+            "http_status": 503
+          },
+          "observed": {
+            "provider_event": "timeout",
+            "http_status": 503
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "08",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "08",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "Your annual certification limit is INR 25,000.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual certification limit"
+            ],
+            [
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "Your annual certification limit is INR 25,000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual certification limit"
+                ],
+                "found": [
+                  "annual certification limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR 80000"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "08",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "09",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "09",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "The annual certification reimbursement limit for employees is INR 25000.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "annual certification reimbursement limit",
+              "annual certification limit"
+            ],
+            [
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "The annual certification reimbursement limit for employees is INR 25000.",
+            "matched": [
+              {
+                "alternatives": [
+                  "annual certification reimbursement limit",
+                  "annual certification limit"
+                ],
+                "found": [
+                  "annual certification reimbursement limit"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "INR 80000"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "09",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "10",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "10",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "The annual certification reimbursement limit is INR 25000 per year.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "certification"
+            ],
+            [
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "The annual certification reimbursement limit is INR 25000 per year.",
+            "matched": [
+              {
+                "alternatives": [
+                  "certification"
+                ],
+                "found": [
+                  "certification"
+                ]
+              },
+              {
+                "alternatives": [
+                  "INR 25000"
+                ],
+                "found": [
+                  "INR 25000"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "claim is approved",
+              "payment is guaranteed",
+              "guaranteed payment",
+              "approved and payment"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "10",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "11",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "11",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "body": null
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": "ANSWERED",
+            "answer": "For certification, the yearly employee cap is 25,000 Indian rupees.",
+            "citations": [
+              {
+                "chunk_id": "P02",
+                "quote": "The annual certification reimbursement limit for employees is INR 25000."
+              }
+            ],
+            "body": null
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "observed": {
+            "http_status": 200,
+            "status": "ANSWERED",
+            "error_code": null
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "required_answer_facts",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": [
+            [
+              "certification"
+            ],
+            [
+              "yearly employee cap",
+              "annual certification limit"
+            ],
+            [
+              "25000 Indian rupees",
+              "INR 25000"
+            ]
+          ],
+          "observed": {
+            "answer": "For certification, the yearly employee cap is 25,000 Indian rupees.",
+            "matched": [
+              {
+                "alternatives": [
+                  "certification"
+                ],
+                "found": [
+                  "certification"
+                ]
+              },
+              {
+                "alternatives": [
+                  "yearly employee cap",
+                  "annual certification limit"
+                ],
+                "found": [
+                  "yearly employee cap"
+                ]
+              },
+              {
+                "alternatives": [
+                  "25000 Indian rupees",
+                  "INR 25000"
+                ],
+                "found": [
+                  "25000 Indian rupees"
+                ]
+              }
+            ]
+          },
+          "reason": "Required facts are present using accepted wording."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": [
+              "claim is approved",
+              "payment is guaranteed"
+            ]
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": [
+              "P02"
+            ]
+          },
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [
+              "P02"
+            ],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 1,
+            "invalid_request": false
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "11",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "success",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "success",
+            "http_status": 200
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    },
+    {
+      "recording_id": "12",
+      "status": "PASS",
+      "checks": [
+        {
+          "recording_id": "12",
+          "check_id": "response_contract",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "HTTP 200 business outcome or documented structured HTTP error",
+          "observed": {
+            "http_status": 400,
+            "status": null,
+            "body": {
+              "error": {
+                "code": "INVALID_REQUEST",
+                "message": "question must not be empty"
+              }
+            }
+          },
+          "reason": "HTTP status and body shape follow the contract."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "outcome_body_shape",
+          "risk_area": "response_contract",
+          "verdict": "PASS",
+          "expected": "Outcome fields are consistent with status; errors contain only an error object",
+          "observed": {
+            "status": null,
+            "answer": null,
+            "citations": [],
+            "body": {
+              "error": {
+                "code": "INVALID_REQUEST",
+                "message": "question must not be empty"
+              }
+            }
+          },
+          "reason": "Outcome fields are structurally consistent."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "expected_outcome",
+          "risk_area": "expected_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "http_status": 400,
+            "status": null,
+            "error_code": "INVALID_REQUEST"
+          },
+          "observed": {
+            "http_status": 400,
+            "status": null,
+            "error_code": "INVALID_REQUEST"
+          },
+          "reason": "Observed outcome matches contract and policy-derived expectation."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "prohibited_claims",
+          "risk_area": "answer_grounding",
+          "verdict": "PASS",
+          "expected": {
+            "absent": []
+          },
+          "observed": {
+            "found": []
+          },
+          "reason": "No listed prohibited claim appears."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "expected_citations",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": {
+            "required_ids": []
+          },
+          "observed": {
+            "citation_ids": [],
+            "missing": []
+          },
+          "reason": "Expected evidence is cited."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "citation_integrity_and_eligibility",
+          "risk_area": "citation_quality",
+          "verdict": "PASS",
+          "expected": "Each citation exists, quotes actual text, and is eligible for caller/date",
+          "observed": {
+            "citation_ids": [],
+            "issues": []
+          },
+          "reason": "Citations resolve to exact eligible evidence."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "generation_context_eligibility",
+          "risk_area": "authorization",
+          "verdict": "PASS",
+          "expected": "Only approved tenant/role passages active at as_of; caller must resolve from identity lookup",
+          "observed": {
+            "model_context_ids": [],
+            "issues": []
+          },
+          "reason": "All model context is eligible."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "generation_attempt_limit",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": "Zero calls for invalid request; at most one call otherwise",
+          "observed": {
+            "generation_attempts": 0,
+            "invalid_request": true
+          },
+          "reason": "Trace obeys generation invocation limits."
+        },
+        {
+          "recording_id": "12",
+          "check_id": "provider_failure_mapping",
+          "risk_area": "provider_behavior",
+          "verdict": "PASS",
+          "expected": {
+            "provider_event": "not_called",
+            "http_status": null
+          },
+          "observed": {
+            "provider_event": "not_called",
+            "http_status": 400
+          },
+          "reason": "Provider errors map to documented HTTP errors."
+        }
+      ]
+    }
+  ],
+  "assessment_kind": "hypothetical_proposed_fixes_not_product_observations",
+  "proposed_fixes_applied": 8,
+  "designed_tests": [
+    {
+      "test_id": "F01",
+      "requirement": "Reject missing caller identity",
+      "input": "POST /answer with no X-Caller-Id",
+      "expected": "HTTP 401 structured safe error; generation not invoked",
+      "priority": "P0",
+      "check": "HTTP status/body and generation_attempts=0",
+      "status": "NOT_RUN",
+      "needed": "Live API, request instrumentation"
+    },
+    {
+      "test_id": "F02",
+      "requirement": "Reject unknown caller identity",
+      "input": "Unknown X-Caller-Id with otherwise valid question/date",
+      "expected": "HTTP 401; no generation call",
+      "priority": "P0",
+      "check": "HTTP status/body and provider-call trace",
+      "status": "NOT_RUN",
+      "needed": "Live API and provider-call trace"
+    },
+    {
+      "test_id": "F03",
+      "requirement": "Validate real calendar date format",
+      "input": "Valid identity and question with as_of=2026-02-30",
+      "expected": "HTTP 400 safe error; no generation call",
+      "priority": "P1",
+      "check": "HTTP status/body and provider-call trace",
+      "status": "NOT_RUN",
+      "needed": "Live API and provider-call trace"
+    },
+    {
+      "test_id": "F04",
+      "requirement": "Reject missing required request fields",
+      "input": "Omit question or as_of in separate requests",
+      "expected": "HTTP 400 safe error; no generation call",
+      "priority": "P1",
+      "check": "HTTP status/body and provider-call trace",
+      "status": "NOT_RUN",
+      "needed": "Live API and provider-call trace"
+    },
+    {
+      "test_id": "F05",
+      "requirement": "Map unavailable provider correctly",
+      "input": "Provider unavailable during a valid request",
+      "expected": "HTTP 503 error body, at most one generation attempt",
+      "priority": "P1",
+      "check": "Inject provider failure and inspect status/attempt trace",
+      "status": "NOT_RUN",
+      "needed": "Controlled provider fault injection"
+    },
+    {
+      "test_id": "F06",
+      "requirement": "Map malformed provider output correctly",
+      "input": "Provider returns malformed output",
+      "expected": "HTTP 502 error body, never INSUFFICIENT_EVIDENCE, no retry",
+      "priority": "P1",
+      "check": "Inject malformed output and inspect response/call count",
+      "status": "NOT_RUN",
+      "needed": "Controlled provider fault injection"
+    },
+    {
+      "test_id": "F07",
+      "requirement": "Enforce provider timeout",
+      "input": "Provider response exceeding 2000 ms",
+      "expected": "Timeout response at contract mapping; no retry",
+      "priority": "P1",
+      "check": "Measure request and provider duration under controlled delay",
+      "status": "NOT_RUN",
+      "needed": "Clock/trace instrumentation and controlled provider"
+    },
+    {
+      "test_id": "F08",
+      "requirement": "Prevent cross-tenant retrieval under hostile text",
+      "input": "Atlas caller asks to switch identity and retrieves P11 injection passage",
+      "expected": "Identity stays Atlas; P06/P12 absent from context and response",
+      "priority": "P0",
+      "check": "Inspect retrieval/generation context, response, and citations",
+      "status": "NOT_RUN",
+      "needed": "Live retrieval traces with controlled corpus"
+    },
+    {
+      "test_id": "F09",
+      "requirement": "Enforce one model attempt",
+      "input": "Transient provider failure on valid request",
+      "expected": "Exactly zero or one call; no automatic retry",
+      "priority": "P1",
+      "check": "Provider call counter across repeated controlled requests",
+      "status": "NOT_RUN",
+      "needed": "Provider instrumentation"
+    },
+    {
+      "test_id": "F10",
+      "requirement": "Measure live reliability and latency",
+      "input": "Representative authorized workload over agreed load profile",
+      "expected": "Meets pilot SLO and no tenant/role leakage",
+      "priority": "P2",
+      "check": "Load test plus p50/p95/p99, error, and isolation analysis",
+      "status": "NOT_RUN",
+      "needed": "Staging environment, approved SLO, representative workload"
+    }
+  ]
+}

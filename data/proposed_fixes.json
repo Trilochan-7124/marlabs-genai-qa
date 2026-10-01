@@ -1,0 +1,76 @@
+[
+  {
+    "variant_id": "fix-02-role-policy",
+    "recording_id": "02",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "answer": "The annual certification reimbursement limit for contractors is INR 10000.",
+      "citations": [{"chunk_id": "P05", "quote": "The annual certification reimbursement limit for contractors is INR 10000."}]
+    },
+    "trace": {"model_context_ids": ["P05"]}
+  },
+  {
+    "variant_id": "fix-03-effective-date",
+    "recording_id": "03",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "answer": "The annual certification reimbursement limit is INR 25000.",
+      "citations": [{"chunk_id": "P02", "quote": "The annual certification reimbursement limit for employees is INR 25000."}]
+    },
+    "trace": {"model_context_ids": ["P02"]}
+  },
+  {
+    "variant_id": "fix-04-policy-conflict",
+    "recording_id": "04",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "status": "CONFLICT",
+      "answer": null,
+      "citations": [
+        {"chunk_id": "P07", "quote": "The annual home-office allowance for employees is INR 12000."},
+        {"chunk_id": "P08", "quote": "The annual home-office allowance for employees is INR 15000."}
+      ]
+    },
+    "trace": {"model_context_ids": ["P07", "P08"]}
+  },
+  {
+    "variant_id": "fix-06-citation-integrity",
+    "recording_id": "06",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "citations": [{"chunk_id": "P02", "quote": "The annual certification reimbursement limit for employees is INR 25000."}]
+    }
+  },
+  {
+    "variant_id": "fix-07-timeout-mapping",
+    "recording_id": "07",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "http_status": 503,
+      "body": {"error": {"code": "PROVIDER_TIMEOUT", "message": "The answer service is temporarily unavailable."}}
+    },
+    "remove_observed_fields": ["status", "answer", "citations"]
+  },
+  {
+    "variant_id": "fix-08-context-isolation",
+    "recording_id": "08",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "trace": {"model_context_ids": ["P02"]}
+  },
+  {
+    "variant_id": "fix-09-prompt-identity",
+    "recording_id": "09",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {
+      "answer": "The annual certification reimbursement limit for employees is INR 25000.",
+      "citations": [{"chunk_id": "P02", "quote": "The annual certification reimbursement limit for employees is INR 25000."}]
+    },
+    "trace": {"model_context_ids": ["P02"]}
+  },
+  {
+    "variant_id": "fix-10-no-approval-guarantee",
+    "recording_id": "10",
+    "label": "Candidate-created proposed correction; not a supplied product observation",
+    "observed": {"answer": "The annual certification reimbursement limit is INR 25000 per year."}
+  }
+]
